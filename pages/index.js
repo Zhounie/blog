@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import List from '../components/List'
 
 import styles from '../styles/home.less'
@@ -16,6 +17,7 @@ export default function Home() {
       <main className={styles.main}>
         <List></List>
       </main>
+      <Footer></Footer>
     </div>
   )
 }
