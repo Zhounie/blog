@@ -6,24 +6,12 @@ import styles from '../styles/detail.less'
 
 
 import { useEffect } from 'react'
-
+import fetch from 'isomorphic-unfetch'
 import marked from 'marked'
-export default function Detail() {
-    
+
+export default function Detail(props) {
     useEffect(() => {
-        // const $ = require('jquery')(window)
-        // require('../static/js/editormd.min.js')
-        // editormd.markdownToHTML("content", {
-        //     htmlDecode: "style,script,iframe",
-        //     emoji: true,
-        //     taskList: true,
-        //     tocm: true,
-        //     tex: true, // 默认不解析
-        //     flowChart: true, // 默认不解析
-        //     sequenceDiagram: true, // 默认不解析
-        //     codeFold: true
-        // })
-        document.getElementById('content').innerHTML = marked('# Marked in the browser\n\nRendered by **marked**.')
+        document.getElementById('content').innerHTML = marked(props.data.content)
     }, [])
     return (
         <div className={styles.detail}>
@@ -34,4 +22,21 @@ export default function Detail() {
             <Footer></Footer>
         </div>
     )
+}
+
+Detail.getInitialProps = async function ({query}) {
+    console.log(query);
+    if (!query.id) {
+        return {}
+    }
+    const result = await fetch(`http://localhost:8888/blog/getBlogDetail?id=${query.id}`)
+    const res = await result.json()
+    if (res.code === 200) {
+      return {
+        data: res.data
+      }
+    }
+    return {
+      data: {}
+    }
 }

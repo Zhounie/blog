@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next start",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
+    "axios": "^0.20.0",
     "editor.md": "^1.5.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6",
+    "isomorphic-unfetch": "^3.1.0",
     "jquery": "^3.5.1",
     "less": "^3.12.2",
     "marked": "^1.2.0",
