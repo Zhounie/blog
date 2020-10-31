@@ -41,7 +41,7 @@ Home.getInitialProps = async function () {
   //   }
   // }
 
-  let res = await axios.get('http://localhost:8888/blog/getBlogList')
+  let res = await axios.get('http://localhost:3000/blog/getBlogList')
   if (res.data.code === 200) {
     return {
       data: res.data.data

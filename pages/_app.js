@@ -8,7 +8,20 @@ function MyApp({ Component, pageProps }) {
     require('../static/iconfont/iconfont.js')
   }, [])
   return (
+    <>
+    <style global jsx>
+      {`
+        .icon {
+          width: 1em; height: 1em;
+          vertical-align: -0.15em;
+          fill: currentColor;
+          overflow: hidden;
+          font-size: 28px;
+        }
+      `}
+    </style>
     <Component {...pageProps} />
+    </>
   )
 }
 

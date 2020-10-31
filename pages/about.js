@@ -12,11 +12,11 @@ export default function About() {
             </Head>
             <Header></Header>
             <main className={styles.main}>
-                <div class={styles.about_item_box}>
+                <div className={styles.about_item_box}>
                     <div className={styles.title}>关于我</div>
                     <div className={styles.content}>1231231212312312123123121231231212312312</div>
                 </div>
-                <div class={styles.about_item_box}>
+                <div className={styles.about_item_box}>
                     <div className={styles.title}>联系我</div>
                     <div className={styles.content}>1231231212312312123123121231231212312312</div>
                 </div>

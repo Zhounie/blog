@@ -1,20 +1,19 @@
-const proxy = require('http-proxy-middleware')
 const express = require('express')
 const next = require('next')
+const {createProxyMiddleware} = require('http-proxy-middleware')
 
 const devProxy = {
     '/blog': {
-        target: 'http://localhost:8888',
+        target: 'http://localhost:8888', // 端口自己配置合适的
         changeOrigin: true
     }
 }
 
-const port = 3000
-
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({
-    dev: true
+    dev
 })
-
 const handle = app.getRequestHandler()
 
 app.prepare()
@@ -23,7 +22,7 @@ app.prepare()
 
         if (dev && devProxy) {
             Object.keys(devProxy).forEach(function(context) {
-                server.use(proxy(context, devProxy[context]))
+                server.use(createProxyMiddleware(context, devProxy[context]))
             })
         }
 
