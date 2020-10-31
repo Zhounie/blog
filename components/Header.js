@@ -13,6 +13,7 @@ export default function Header(props) {
         setPath(Router.asPath)
     }, [])
     return (
+        <>
         <div className={styles.header}>
             <div className={styles.left}>
                 <div className={styles.photo}>
@@ -26,6 +27,16 @@ export default function Header(props) {
                 <li className={path === '/about' ? styles.active : ''}>
                     <Link href="/about">关于</Link>
                 </li>
+                <li className={path === '/about' ? styles.active : ''}>
+                    <svg className={icon.icon} aria-hidden="true">
+                        <use xlinkHref="#icon-More"></use>
+                    </svg>
+                    <ul className={styles.more}>
+                        <li>Vue</li>
+                        <li>React</li>
+                        <li>Javascript</li>
+                    </ul>
+                </li>
             </ul>
             <div className={styles.right}>
                 <svg className={icon.icon} aria-hidden="true">
@@ -33,5 +44,6 @@ export default function Header(props) {
                 </svg>
             </div>
         </div>
+        </>
     )
 }

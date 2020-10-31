@@ -18,19 +18,43 @@
             }
         }
     }
-    .menu {
+    > .menu {
         display: flex;
         align-items: center;
         font-size: 15px;
-        li {
+        height: 100%;
+        > li {
             color: #333;
+            line-height: 56px;
+            padding: 0 24px;
+            position: relative;
         }
-        li:not(:first-child) {
-            padding-left: 60px;
-        }
-        li.active {
+        > li.active {
             font-weight: bold;
             color: #000;
+        }
+        > li:hover {
+            background: #282828;
+            color: #ffe300;
+        }
+        .more {
+            background: #fff;
+            position: absolute;
+            left: 0;
+            top: 56px;
+            width: 180px;
+            padding: 6px 0;
+            box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
+            display: none;
+            li {
+                height: 48px;
+                line-height: 48px;
+                color: #282828;
+                padding: 0 20px;
+            }
+            li:hover {
+                background: #ffe300;
+            }
         }
     }
 
