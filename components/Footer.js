@@ -33,10 +33,13 @@ export default function Footer() {
                     </li>
                 </ul>
                 <ul className={styles.contact}>
-                    <li>
+                    <li className={styles.wexin}>
                         <svg className={icon.icon} style={{fontSize: '22px'}} aria-hidden="true">
                             <use xlinkHref="#icon-gongzhonghao"></use>
                         </svg>
+                        <div>
+                            <img src="/static/images/code.png" />
+                        </div>
                     </li>
                     <li onClick={() => handleOpen('https://github.com/zhounie')}>
                         <svg className={icon.icon} style={{fontSize: '22px'}} aria-hidden="true">

@@ -46,13 +46,14 @@
             padding: 6px 0;
             box-shadow: 0 1px 12px 0 rgba(0,0,0,.2);
             display: none;
-            li {
+            p {
                 height: 48px;
                 line-height: 48px;
                 color: #282828;
                 padding: 0 20px;
+                cursor: pointer;
             }
-            li:hover {
+            p:hover {
                 background: #ffe300;
             }
         }
@@ -60,5 +61,18 @@
 
     .right {
 
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        input {
+            width: 300px;
+            border: none;
+            outline: none;
+            height: 30px;
+            background: none;
+            font-size: 16px;
+        }
     }
 }

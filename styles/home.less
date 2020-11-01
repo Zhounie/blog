@@ -8,5 +8,50 @@
         margin: 0 auto;
         flex: 1;
         width: 1200px;
+        display: flex;
+        .left_box {
+            width: 400px;
+            .classify {
+                background: #fff;
+                margin-right: 20px;
+                padding-bottom: 10px;
+                h4 {
+                    height: 60px;
+                    line-height: 60px;
+                    padding: 0 30px;
+                    background: #fff;
+                    border-bottom: 1px solid #ccc;
+                }
+                div {
+                    p {
+                        background: #fff;
+                        padding: 10px 0;
+                        cursor: pointer;
+                        box-sizing: content-box;
+                        span {
+                            display: block;
+                            height: 35px;
+                            line-height: 35px;
+                            padding: 0 30px;
+                            position: relative;
+                        }
+                        
+                    }
+                    p.active {
+                        span::before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            height: 100%;
+                            border-left: 3px solid #ffe300;
+                        }
+                    }
+                    p:hover {
+                        background: #ffe300;
+                    }
+                }
+            }
+        }
     }
 }
