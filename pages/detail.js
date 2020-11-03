@@ -32,7 +32,7 @@ Detail.getInitialProps = async function ({query}) {
     if (!query.id) {
         return {}
     }
-    const result = await fetch(`http://localhost:8888/blog/getBlogDetail?id=${query.id}`)
+    const result = await fetch(`http://81.69.28.107:8888/blog/getBlogDetail?id=${query.id}`)
     const res = await result.json()
     console.log(res);
     if (res.code === 200) {

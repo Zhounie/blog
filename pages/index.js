@@ -70,7 +70,7 @@ export default function Home(props) {
 
 Home.getInitialProps = async function ({query}) {
   console.log('----------');
-  let res = await axios.get(`http://localhost:3000/blog/getBlogList`, {
+  let res = await axios.get(`http://81.69.28.107:8888/blog/getBlogList`, {
     params: query
   })
   if (res.data.code === 200) {
