@@ -55,7 +55,9 @@ export default function Header(props) {
                             <use xlinkHref="#icon-More"></use>
                         </svg>
                         <div className={styles.more} style={{display: display}}>
-                            <p>Vue</p>
+                            <p>
+                                <Link href="/book">书籍推荐</Link>
+                            </p>
                             <p>React</p>
                             <p>JavaScript</p>
                         </div>
