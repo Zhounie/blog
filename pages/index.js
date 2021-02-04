@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Head from 'next/head'
-
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Link from 'next/link'
 import List from '../components/List'
-
+import Layout from '../components/Layout'
 import styles from '../styles/home.less'
-// import fetch from 'isomorphic-unfetch'
-import axios from 'axios'
-
+import { getBlogList } from '../lib/api'
 export default function Home(props) {
   const [active, setActive] = useState('')
   
@@ -23,7 +19,7 @@ export default function Home(props) {
     setActive(active)
     if (active) {
       Router.push({
-        pathname: '/',
+        pathname: `/index`,
         query: {
           type: active
         }
@@ -40,41 +36,39 @@ export default function Home(props) {
         <title>首页</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header></Header>
-      <main className={styles.main}>
-        <div className={styles.left_box}>
-          <div className={styles.classify}>
-            <h4>分类</h4>
-            <div>
-              <p className={!active ? styles.active : ''} onClick={() => onSetActive()}>
-                <span>全部</span>
-              </p>
-              <p className={active === 'vue' ? styles.active : ''} onClick={() => onSetActive('vue')}>
-                <span>Vue</span>
-              </p>
-              <p className={active === 'react' ? styles.active : ''} onClick={() => onSetActive('react')}>
-                <span>React</span>
-              </p>
-              <p className={active === 'javascript' ? styles.active : ''} onClick={() => onSetActive('javascript')}>
-                <span>Javascript</span>
-              </p>
+      <Layout>
+        <main className={styles.main}>
+          <div className={styles.left_box}>
+            <div className={styles.classify}>
+              <h4>分类</h4>
+              <div>
+                <p className={!active ? styles.active : ''}>
+                  <Link as={`/index/all`} href="/index/[active]">全部</Link>
+                </p>
+                <p className={active === 'vue' ? styles.active : ''}>
+                  <Link as={`/index/vue`} href="/index/[active]">Vue</Link>
+                </p>
+                <p className={active === 'react' ? styles.active : ''}>
+                  <Link as={`/index/react`} href="/index/[active]">React</Link>
+                </p>
+                <p className={active === 'javascript' ? styles.active : ''}>
+                  <Link as={`/index/javascript`} href="/index/[active]">Javascript</Link>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <List list={props.data}></List>
-      </main>
-      <Footer></Footer>
+          <List list={props.data}></List>
+        </main>
+      </Layout>
     </div>
   )
 }
 
 Home.getInitialProps = async function ({query}) {
-  let res = await axios.get(`http://81.69.28.107:8888/blog/getClientBlogList`, {
-    params: query
-  })
-  if (res.data.code === 200) {
+  const res = await getBlogList(query)
+  if (res.code === 200) {
     return {
-      data: res.data.data
+      data: res.data
     }
   }
   return {

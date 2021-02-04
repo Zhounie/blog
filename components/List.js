@@ -12,7 +12,8 @@ export default function List(props) {
                             <h4 className={styles.title}>{item.title}</h4>
                             <span className={styles.time}>{item.createdAt}</span>
                             <span className={styles.more}>
-                            <Link href={{pathname: '/detail', query: {id: item.id}}}>...阅读全文</Link>
+                            <Link as={`/posts/${item.id}`} href="/posts/[slug]">...阅读全文</Link>
+                            {/* <Link href={{pathname: '/detail', query: {id: item.id}}}>...阅读全文</Link> */}
                             </span>
                         </div>
                     )
