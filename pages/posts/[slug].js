@@ -41,11 +41,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     return {
-        paths: [
-            { params: { slug: '1' } },
-            { params: { slug: '2' } },
-            { params: { slug: '3' } },
-        ],
+        paths: [],
         fallback: true
     }
 }
