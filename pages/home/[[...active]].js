@@ -28,22 +28,22 @@ export default function Home(props) {
               <h4>分类</h4>
               <div>
                 <p className={!active ? styles.active : ''}>
-                  <Link href="/index">
+                  <Link href="/home">
                     <span>全部</span>
                   </Link>
                 </p>
                 <p className={active === 'vue' ? styles.active : ''}>
-                  <Link href="/index/vue">
+                  <Link href="/home/vue">
                     <span>Vue</span>
                   </Link>
                 </p>
                 <p className={active === 'react' ? styles.active : ''}>
-                  <Link href="/index/react">
+                  <Link href="/home/react">
                     <span>React</span>
                   </Link>
                 </p>
                 <p className={active === 'javascript' ? styles.active : ''}>
-                  <Link href="/index/javascript">
+                  <Link href="/home/javascript">
                     <span>Javascript</span>
                   </Link>
                 </p>
@@ -87,3 +87,18 @@ export async function getStaticPaths() {
     fallback: true
   }
 }
+
+
+// {
+//   params: {
+//     active: ['vue']
+//   }
+// }, {
+//   params: {
+//     active: ['javascript']
+//   }
+// }, {
+//   params: {
+//     active: ['react']
+//   }
+// }
