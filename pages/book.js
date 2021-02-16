@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import styles from '../styles/book.less'
-import axios from 'axios'
+import { getBookList } from '../lib/api'
 
 export default function Book (props) {
     return (
@@ -27,19 +27,20 @@ export default function Book (props) {
     )
 }
 
-Book.getInitialProps = async function ({query}) {
-    console.log('----------');
-    let res = await axios.get(`http://localhost:8888/book/getBookList`, {
-      params: query
-    })
-    console.log(res.data);
-    if (res.data.code === 200) {
-      return {
-        data: res.data.data
+
+
+export async function getStaticProps({ params }) {
+  let res = await getBookList()
+  if (res.code === 200) {
+    return {
+      props: {
+        data: res.data
       }
     }
-    return {
+  }
+  return {
+    props: {
       data: []
     }
   }
-  
+}
