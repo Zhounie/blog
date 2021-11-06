@@ -4,6 +4,7 @@ import Layout from '../../components/Layout'
 import Content from '../../components/Content'
 import Loading from '../../components/Loading'
 import { getBlogDetail } from '../../lib/api'
+import styles from '../../styles/posts.less'
 
 export default function Post({ data }) {
     const router = useRouter()
@@ -11,15 +12,19 @@ export default function Post({ data }) {
         return <ErrorPage statusCode={502}></ErrorPage>
     }
     return (
-        <Layout>
-            {
-                router.isFallback ? (
-                    <Loading>Loading...</Loading>
-                ) : (
-                    <Content content={data.content}></Content>
-                )
-            }
-        </Layout>
+        <div className={styles.posts}>
+            <Layout>
+                <div className={styles.main}>
+                    {
+                        router.isFallback ? (
+                            <Loading>Loading...</Loading>
+                        ) : (
+                            <Content content={data.content}></Content>
+                        )
+                    }
+                </div>
+            </Layout>
+        </div>
     )
 }
 

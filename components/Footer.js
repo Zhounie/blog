@@ -23,13 +23,27 @@ export default function Footer() {
                         <Link href="/about">关于我</Link>
                     </li>
                     <li>
-                        联系我们
+                        <Link href="/about">联系我</Link>
                     </li>
                     <li>
                         中文
                     </li>
                     <li>
                         English
+                    </li>
+                    <li className={styles.friend}>
+                        友情链接
+                        <ul className={styles.friend_list}>
+                            <li>
+                                <a href="https://www.ruanyifeng.com/" target="_blank">阮一峰</a>
+                            </li>
+                            <li>
+                                <a href="https://www.zhangxinxu.com/" target="_blank">张鑫旭</a>
+                            </li>
+                            <li>
+                                <a href="http://jspang.com/" target="_blank">技术胖</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <ul className={styles.contact}>
